@@ -11,7 +11,7 @@ export class ShowTaskComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   TaskList: any= [];
-
+//
   ModalTitle:string | undefined;
   ActiveAddEditTaskComp: boolean = false;
   task:any;
