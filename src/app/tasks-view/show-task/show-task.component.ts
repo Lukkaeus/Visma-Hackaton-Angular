@@ -11,7 +11,7 @@ export class ShowTaskComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   TaskList: any= [];
-//
+
   ModalTitle:string | undefined;
   ActiveAddEditTaskComp: boolean = false;
   task:any;
@@ -44,8 +44,41 @@ export class ShowTaskComponent implements OnInit {
 
   checkClick(item: any){
     this.task = item;
-    console.log("klikol si na checkbox" + item)
+    const id = this.task.TaskId;
+    const isChecked = this.task.CheckBox;
+    console.log(id, isChecked)
+    console.log("klikol si na checkbox" + item.CheckBox)
+
+    if(isChecked == 1){
+      var val = {TaskId:this.task.TaskId, 
+        TaskName:this.task.TaskName,
+        TaskDescription:this.task.TaskDescription,
+        DateOfCreation:this.task.DateOfCreation,
+        DateOfExpiration:this.task.DateOfExpiration,
+        ExpectedDuration:this.task.ExpectedDuration,
+        CheckBox:0}
+      this.service.updateTask(val).subscribe(res=>{
+        alert(res.toString());
+      })
+    } else {
+      var val = {TaskId:this.task.TaskId, 
+        TaskName:this.task.TaskName,
+        TaskDescription:this.task.TaskDescription,
+        DateOfCreation:this.task.DateOfCreation,
+        DateOfExpiration:this.task.DateOfExpiration,
+        ExpectedDuration:this.task.ExpectedDuration,
+        CheckBox:1}
+      this.service.updateTask(val).subscribe(res=>{
+        alert(res.toString());
+      })
+    }
   }
+
+ /* checkClick($event: any){
+    const id = $event.target.value;
+    const isChecked= $event.target.checked;
+    console.log(id, isChecked)
+  }*/
 
   deleteClick(item:any){
     if(confirm('Are you sure you want to delete?')){

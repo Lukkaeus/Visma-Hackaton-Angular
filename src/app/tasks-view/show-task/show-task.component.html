@@ -40,7 +40,10 @@ tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <tbody>
         <tr *ngFor="let dataItem of TaskList">
             
-            <input type="checkbox" class="checkbox" (click)="checkClick(dataItem)">
+            <input type="checkbox" class="checkbox" 
+                (change)="checkClick(dataItem)"
+                [value]="dataItem.TaskId"
+                [checked]="dataItem.CheckBox">
             <!-- <td>{{dataItem.TaskId}}</td> -->
             <td>{{dataItem.TaskName}}</td>
             <td>{{dataItem.TaskDescription}}</td>
