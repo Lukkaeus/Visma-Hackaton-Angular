@@ -1,9 +1,26 @@
 <div class="form-froup row">
 
-    <label class="col-sm-2 col-form-label">Department Name</label>
+    <label class="col-sm-2 col-form-label" >Task Name</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" [(ngModel)]="TaskName"
         placeholder="Enter Task Name">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Task Description</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="TaskDescription"
+        placeholder="Some space for your notes">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Date when task has to be done</label>
+    <div class="col-sm-10">
+        <input type="date" [(ngModel)]="DateOfExpiration">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Expected time</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="ExpectedDuration"
+        placeholder="How much time is needed for task">
     </div>
 </div>
 

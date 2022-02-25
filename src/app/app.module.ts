@@ -11,6 +11,7 @@ import { SharedService  } from './shared.service';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule 
+    NgbModule,
+    BrowserAnimationsModule 
   ],
   exports: [AddEditTaskComponent],
   providers: [SharedService],

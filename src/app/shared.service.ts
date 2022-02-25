@@ -12,7 +12,7 @@ readonly APIUrl="http://localhost:5000/api";
   constructor(private http:HttpClient) { }
 
   getTaskList(): Observable<any[]>{
-    return this.http.get<any>(this.APIUrl+'/task')
+    return this.http.get<any>(this.APIUrl+'/Task')
   }
 
   addTask(val: any){
@@ -24,7 +24,7 @@ readonly APIUrl="http://localhost:5000/api";
   }
 
   deleteTask(val: any){
-    return this.http.delete(this.APIUrl+'/Task',val)
+    return this.http.delete(this.APIUrl+'/Task/'+val)
   }
 
   getAllTasksNames(): Observable <any[]>{

@@ -1,0 +1,19 @@
+.modal-body
+{
+    background-color: rgb(23, 175, 196);
+}
+
+.modal-header
+{
+    background-color: rgb(23, 175, 196);
+}
+
+.checkbox
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 40%;
+    size: 10%;
+}
+
+
