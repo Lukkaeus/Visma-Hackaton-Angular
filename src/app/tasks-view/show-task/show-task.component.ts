@@ -17,6 +17,9 @@ export class ShowTaskComponent implements OnInit {
   task:any;
   isModalVisible: boolean = false;
 
+  TaskNameFilter: string = "";
+  TaskListWithoutFilter: any = [];
+
   ngOnInit(): void {
     this.refreshTaskList(); 
   }
@@ -46,30 +49,25 @@ export class ShowTaskComponent implements OnInit {
     this.task = item;
     const id = this.task.TaskId;
     const isChecked = this.task.CheckBox;
-    console.log(id, isChecked)
-    console.log("klikol si na checkbox" + item.CheckBox)
+    /*console.log(id, isChecked)
+    console.log("klikol si na checkbox" + item.CheckBox)*/
+
+    var val = {TaskId:this.task.TaskId, 
+      TaskName:this.task.TaskName,
+      TaskDescription:this.task.TaskDescription,
+      DateOfCreation:this.task.DateOfCreation,
+      DateOfExpiration:this.task.DateOfExpiration,
+      ExpectedDuration:this.task.ExpectedDuration,
+      CheckBox:0}
 
     if(isChecked == 1){
-      var val = {TaskId:this.task.TaskId, 
-        TaskName:this.task.TaskName,
-        TaskDescription:this.task.TaskDescription,
-        DateOfCreation:this.task.DateOfCreation,
-        DateOfExpiration:this.task.DateOfExpiration,
-        ExpectedDuration:this.task.ExpectedDuration,
-        CheckBox:0}
       this.service.updateTask(val).subscribe(res=>{
-        alert(res.toString());
+       // alert(res.toString());
       })
     } else {
-      var val = {TaskId:this.task.TaskId, 
-        TaskName:this.task.TaskName,
-        TaskDescription:this.task.TaskDescription,
-        DateOfCreation:this.task.DateOfCreation,
-        DateOfExpiration:this.task.DateOfExpiration,
-        ExpectedDuration:this.task.ExpectedDuration,
-        CheckBox:1}
+      val.CheckBox = 1;
       this.service.updateTask(val).subscribe(res=>{
-        alert(res.toString());
+        //alert(res.toString());
       })
     }
   }
@@ -99,7 +97,21 @@ export class ShowTaskComponent implements OnInit {
   refreshTaskList(){
     this.service.getTaskList().subscribe(data=>{
       this.TaskList = data;
+      this.TaskListWithoutFilter=data;
     })
   }
+
+  filterFun()
+  {
+    var TaskNameFilter = this.TaskNameFilter;
+
+    this.TaskList = this.TaskListWithoutFilter.filter(function (el:any){
+      return el.TaskName.toString().toLowerCase().includes(
+        TaskNameFilter.toString().trim().toLowerCase()
+      )
+    });
+
+  }
+
 
 }
