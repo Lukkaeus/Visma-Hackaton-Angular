@@ -63,11 +63,13 @@ export class ShowTaskComponent implements OnInit {
     if(isChecked == 1){
       this.service.updateTask(val).subscribe(res=>{
        // alert(res.toString());
+       this.refreshTaskList();
       })
     } else {
       val.CheckBox = 1;
       this.service.updateTask(val).subscribe(res=>{
         //alert(res.toString());
+        this.refreshTaskList();
       })
     }
   }
@@ -104,9 +106,8 @@ export class ShowTaskComponent implements OnInit {
   filterFun()
   {
     var TaskNameFilter = this.TaskNameFilter;
-
-    this.TaskList = this.TaskListWithoutFilter.filter(function (el:any){
-      return el.TaskName.toString().toLowerCase().includes(
+    this.TaskList = this.TaskListWithoutFilter.filter(function (x:any){
+      return x.TaskName.toString().toLowerCase().includes(
         TaskNameFilter.toString().trim().toLowerCase()
       )
     });

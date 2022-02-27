@@ -1,4 +1,11 @@
-
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg m-3" 
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Task
+  </button>
   
   <!-- Modal -->
   <div class="modal fade" [ngClass]="{'show d-block': isModalVisible}" id="exampleModal" 
@@ -72,11 +79,3 @@ tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         </tr>
     </tbody>
 </table>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg m-3" 
-data-toggle="modal" data-target="#exampleModal"
-(click)="addClick()"
-data-backdrop="static" data-keyboard="false"
->
-    Add Task
-  </button>
